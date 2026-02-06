@@ -56,23 +56,29 @@ pip install -r requirements.txt
 
 ## 配置
 
-API配置已在 `config/settings.py` 中设置，无需额外配置：
+### 环境变量配置
 
-```python
-API_KEY = "2a7ec09588b14d14b66d730ac2e5266e.2ATkSDwtRBlgi6Rn"
-BASE_URL = "https://open.bigmodel.cn/api/paas/v4"
-MODEL = "glm-4.5-flash"
+创建 `.env` 文件并配置以下变量：
+
+```bash
+API_KEY=your_api_key_here
+BASE_URL=https://open.bigmodel.cn/api/paas/v4
+MODEL=glm-4.5-flash
 ```
+
+或参考 `.env.example` 文件进行配置。
 
 ## 使用
 
 ### 启动应用
 
 ```bash
-streamlit run app.py
+streamlit run app_agent.py
 ```
 
 应用将在浏览器中打开，默认地址为 `http://localhost:8501`
+
+> **注意**: 推荐使用 `app_agent.py`（新版），`app.py` 已弃用
 
 ### 创建示例数据
 
@@ -123,13 +129,20 @@ python examples/create_samples.py
 
 ```
 excelprogress/
-├── app.py                      # Streamlit主应用
+├── app.py                      # Streamlit主应用（已弃用）
+├── app_agent.py                # Streamlit主应用（推荐）
 ├── core/
 │   ├── __init__.py
 │   ├── data_manager.py         # 多表数据管理器
-│   ├── nlp_parser.py           # 自然语言解析器
-│   ├── operation_engine.py     # 操作执行引擎
+│   ├── excel_agent.py          # Excel Agent（新版）
+│   ├── table_metadata.py       # 表格元数据管理
+│   ├── table_history.py        # 操作历史管理
+│   ├── exceptions.py           # 统一异常类
+│   ├── schemas.py             # Pydantic 数据模型
 │   └── cell_operations.py      # 单元格操作工具
+├── deprecated/                # 弃用的旧代码
+│   ├── nlp_parser.py         # 旧版自然语言解析器
+│   └── operation_engine.py   # 旧版操作引擎
 ├── ui/
 │   ├── __init__.py
 │   ├── table_viewer.py         # 表格展示组件
@@ -137,17 +150,27 @@ excelprogress/
 │   └── operation_preview.py    # 操作预览
 ├── utils/
 │   ├── __init__.py
+│   ├── json_helper.py         # JSON 序列化工具
 │   ├── excel_handler.py        # Excel文件处理
 │   └── validators.py           # 数据验证
 ├── config/
 │   ├── __init__.py
-│   ├── settings.py             # 配置参数
-│   └── prompts.py              # LLM提示词模板
+│   ├── logger.py              # 日志配置
+│   ├── settings.py            # 配置参数
+│   └── prompts.py             # LLM提示词模板
+├── tests/
+│   ├── __init__.py
+│   └── test_data_manager.py    # 数据管理器测试
+├── docs/
+│   └── type_annotations.md    # 类型注解指南
 ├── examples/
 │   └── create_samples.py       # 创建示例数据
-├── design.md                   # 项目设计文档
 ├── requirements.txt            # 依赖包
+├── .env.example              # 环境变量模板
 ├── .gitignore
+├── pyproject.toml            # 项目配置
+├── .pre-commit-config.yaml    # Pre-commit 配置
+├── REFACTORING_SUMMARY.md   # 重构总结
 └── README.md
 ```
 

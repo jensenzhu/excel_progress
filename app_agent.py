@@ -488,7 +488,7 @@ def display_footer():
     st.divider()
     st.markdown("""
     <div style='text-align: center; color: gray; font-size: 0.8em;'>
-        Excel智能数据操作助手 | GLM-4.5-Flash
+        Excel智能数据操作助手@jensenzhu
     </div>
     """, unsafe_allow_html=True)
 

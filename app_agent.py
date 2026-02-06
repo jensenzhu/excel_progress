@@ -488,7 +488,7 @@ def display_footer():
     st.divider()
     st.markdown("""
     <div style='text-align: center; color: gray; font-size: 0.8em;'>
-        Excel智能数据操作助手 | LangGraph ReAct Agent + GLM-4.5-Flash
+        Excel智能数据操作助手 | GLM-4.5-Flash
     </div>
     """, unsafe_allow_html=True)
 
@@ -503,8 +503,8 @@ def main():
         page_icon="🤖"
     )
     
-    st.title("🤖 Excel智能数据操作助手 (ReAct Agent)")
-    st.markdown("使用LangGraph ReAct Agent + GLM-4.5-Flash 处理Excel数据")
+    st.title("🤖 Excel智能数据操作助手")
+    st.markdown("使用 GLM-4.5-Flash 处理Excel数据")
     
     initialize_session_state()
     

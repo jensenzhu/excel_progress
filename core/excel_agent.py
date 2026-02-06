@@ -647,7 +647,7 @@ class ExcelAgent:
         ]
 
     def _build_workflow(self):
-        """构建ReAct Agent工作流"""
+        """构建 Agent 工作流"""
         llm_with_tools = self.llm.bind_tools(self.tools)
 
         def agent_node(state):

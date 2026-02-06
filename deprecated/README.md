@@ -9,7 +9,7 @@
 
 ## 原因
 
-这些模块已被新的基于 LangGraph ReAct Agent 的架构取代。新架构（`core/excel_agent.py`）提供：
+这些模块已被新的 Agent 架构取代。新架构（`core/excel_agent.py`）提供：
 - 更好的自然语言理解能力
 - 更灵活的工具调用机制
 - 更容易维护和扩展的代码结构

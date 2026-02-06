@@ -1,10 +1,10 @@
-# Excel智能数据操作助手 - ReAct Agent版本
+# Excel智能数据操作助手
 
-基于 **LangGraph ReAct Agent** 框架重构的智能Excel数据处理系统，使用GLM-4.5-Flash + Pydantic实现更强的自然语言理解能力。
+基于 Agent 框架重构的智能Excel数据处理系统，使用GLM-4.5-Flash + Pydantic实现更强的自然语言理解能力。
 
 ## 🚀 新架构特性
 
-### 1. **ReAct Agent框架**
+### 1. **Agent框架**
 - **推理**: Agent自动分析用户意图，制定执行计划
 - **行动**: 自动选择合适的工具并执行操作
 - **观察**: 根据执行结果调整策略，支持多步骤任务
@@ -31,7 +31,7 @@ excelprogress/
 ├── app_agent.py              # 新版Streamlit应用（使用Agent）
 ├── app.py                    # 旧版应用（向后兼容）
 ├── core/
-│   ├── excel_agent.py         # LangGraph ReAct Agent实现
+│   ├── excel_agent.py         # Agent 实现
 │   ├── schemas.py             # Pydantic模型定义
 │   ├── data_manager.py       # 数据管理器
 │   ├── cell_operations.py    # 单元格操作
@@ -55,7 +55,7 @@ excelprogress/
 ## 🔧 核心组件
 
 ### 1. **ExcelAgent** (core/excel_agent.py)
-基于LangGraph的ReAct Agent实现：
+基于 Agent实现：
 
 ```python
 class ExcelAgent:
@@ -183,7 +183,7 @@ Agent观察结果
 
 | 特性 | 旧版 (app.py) | 新版 (app_agent.py) |
 |------|-----------------|---------------------|
-| 解析方式 | 手动提示词 | ReAct Agent自动推理 |
+| 解析方式 | 手动提示词 | Agent自动推理 |
 | 操作链 | 手动传递result_key | Agent自动管理 |
 | 错误处理 | 基础 | 智能重试和恢复 |
 | 类型安全 | 无 | Pydantic验证 |
@@ -226,7 +226,7 @@ BASE_URL = "your-base-url"
 
 ## 📝 技术栈
 
-- **Agent框架**: LangGraph 0.2+
+- **Agent框架**: Agent 框架
 - **LLM**: GLM-4.5-Flash (OpenAI兼容)
 - **数据处理**: Pandas, OpenPyXL
 - **类型验证**: Pydantic 2.0+
@@ -246,12 +246,12 @@ BASE_URL = "your-base-url"
 
 - [design.md](design.md) - 项目设计文档
 - [README.md](README.md) - 原版README
-- [LangGraph文档](https://langchain-ai.github.io/langgraph/)
+- [Agent 文档](https://langchain-ai.github.io/langgraph/)
 - [Pydantic文档](https://docs.pydantic.dev/)
 
 ## ⚠️ 注意事项
 
-1. **依赖安装**: 需要安装LangGraph相关依赖包
+1. **依赖安装**: 需要安装Agent 相关依赖包
 2. **API配置**: 确保GLM-4.5-Flash API密钥正确
 3. **性能**: 复杂查询可能需要多次LLM调用
 4. **兼容性**: 旧版app.py仍可使用，但功能有限

@@ -504,7 +504,13 @@ def main():
     )
     
     st.title("🤖 Excel智能数据操作助手")
-    st.markdown("使用自然语言处理Excel数据")
+    st.markdown("""
+    **使用说明：**
+    1. 上传要处理或分析的Excel文档
+    2. 在预览中查看数据
+    3. 如需检测表头，先检测再设置
+    4. 在右侧录入需求（支持复杂操作）
+    """)
     
     initialize_session_state()
     

@@ -293,26 +293,25 @@ def display_main_area():
                     TableViewer.display_columns_info(table_info)
     
     with col2:
-        st.header("💬 智能助手")
-        
-        if st.session_state.data_manager.active_table:
-            st.divider()
-            st.subheader("📥 下载表格")
-            active_table = st.session_state.data_manager.active_table
-            last_saved = st.session_state.last_saved_filename
-            download_filename = last_saved or active_table
-            logger.debug(f"Download button in display_main_area: last_saved={last_saved}, download_filename={download_filename}")
-            table_data = st.session_state.data_manager.export_table_to_bytes(active_table, download_filename)
-            if table_data:
-                st.download_button(
-                    label=f"📥 下载 {download_filename}",
-                    data=table_data,
-                    file_name=download_filename,
-                    key=f"download_main_{download_filename}",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
-        
-        display_agent_interface()
+        with st.expander("💬 智能助手", expanded=True):
+            if st.session_state.data_manager.active_table:
+                st.divider()
+                st.subheader("📥 下载表格")
+                active_table = st.session_state.data_manager.active_table
+                last_saved = st.session_state.last_saved_filename
+                download_filename = last_saved or active_table
+                logger.debug(f"Download button in display_main_area: last_saved={last_saved}, download_filename={download_filename}")
+                table_data = st.session_state.data_manager.export_table_to_bytes(active_table, download_filename)
+                if table_data:
+                    st.download_button(
+                        label=f"📥 下载 {download_filename}",
+                        data=table_data,
+                        file_name=download_filename,
+                        key=f"download_main_{download_filename}",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    )
+            
+            display_agent_interface()
 
 
 def display_agent_interface():

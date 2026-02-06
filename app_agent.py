@@ -504,7 +504,7 @@ def main():
     )
     
     st.title("🤖 Excel智能数据操作助手")
-    st.markdown("使用 GLM-4.5-Flash 处理Excel数据")
+    st.markdown("使用自然语言处理Excel数据")
     
     initialize_session_state()
     

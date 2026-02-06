@@ -47,3 +47,6 @@ htmlcov/
 
 # Trae AI files
 .trae/
+
+# Deprecated modules
+deprecated/
